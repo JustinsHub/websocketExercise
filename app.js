@@ -10,11 +10,10 @@ app.get('/', (req, res, next)=>{
     return res.render('index.html')
 })
 
-app.ws('/websocket', ()=>{
-    ws.send('hello world')
+app.ws('/websocket',(ws, req)=>{
+    ws.send('hello from server')
     ws.on('message', (data)=>{
-        console.log('MESSAGE ON SERVER')
-        console.log(data)
+        console.log('server message', data)
     })
 })
 
